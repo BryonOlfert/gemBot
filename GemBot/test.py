@@ -4,9 +4,10 @@ exec(open("builds.py").read())
 exec(open("gemBuilds.py").read())
 exec(open("centerBuilds1p.py").read())
 
-blah = ["p1","r1","r1","r1","r1 "]
+blah = ["p1", "r1", "r1", "r1", "r1 "]
 
-#gemBuilds = what we need
+# gemBuilds = what we need
+
 
 def buildables(roundBuilds):
 
@@ -38,12 +39,12 @@ def buildables(roundBuilds):
                     x = oneShots[0]
                     if roundBuilds.count(x) >= oneShots.count(x):
                         isBuildable.append(each)
-    return isBuildable                
+    return isBuildable
+
 
 def main():
     for each in buildables(blah):
         print(each)
 
-main()
 
-#canyouseeme?
+main()
