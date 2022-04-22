@@ -1,6 +1,6 @@
 exec(open("functions.py").read())
 exec(open("builds.py").read())
-exec(open("gemBuilds.py").read())
+#exec(open("gemBuilds.py").read())
 exec(open("centerBuilds1p.py").read())
 
 def main():
@@ -44,7 +44,7 @@ def main():
         for i in range(0,5):
             
             # This places a gem and adds it to roundGems table
-            placeGem()
+            placeGem(tempBuilds[0][0],tempBuilds[0][1])
 
             testy = False
             testd = False

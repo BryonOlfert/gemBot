@@ -109,7 +109,7 @@ def checkGem():
             path = 'gems/'+str(gem)+str(i)+'.png'
 
             if exists(path):
-                if pyautogui.locateCenterOnScreen(path, grayscale=False, confidence=.9, region=(589, 913, 689, 960)) != None:
+                if pyautogui.locateCenterOnScreen(path, grayscale=False, confidence=.8, region=(589, 913, 689, 960)) != None:
                     return gem+str(i)
                     test = True
                     break
@@ -120,7 +120,7 @@ def checkGem():
 
 def searchClick(x, *args):
     image = pyautogui.locateCenterOnScreen(x)
-    conf = 1.0
+    conf = .9
     gScale = True
 
     if not args:

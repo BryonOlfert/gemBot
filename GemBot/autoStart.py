@@ -1,3 +1,11 @@
 exec(open("functions.py").read())
-while 1 == 1:
-    searchClick("buttons/accept.png")
+
+def main():
+    # turn on failsafe and starts
+    pyautogui.FAILSAFE = True
+    countDownTimer(2)
+
+    restart()
+
+main()
+
