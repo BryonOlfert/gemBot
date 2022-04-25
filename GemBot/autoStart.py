@@ -1,11 +1,11 @@
 exec(open("functions.py").read())
 
 def main():
-    # turn on failsafe and starts
-    pyautogui.FAILSAFE = True
-    countDownTimer(2)
+    while 1 == 1:
+        image = pyautogui.locateCenterOnScreen("buttons/accept.png", grayscale=False, confidence=.8)
 
-    restart()
+        if image != None:
+            pydirectinput.click(image[0],image[1])
+        time.sleep(1)
 
 main()
-
