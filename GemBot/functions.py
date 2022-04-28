@@ -2,7 +2,7 @@ import array
 import math
 import time
 from os.path import exists
-
+import os
 import cv2
 import pyautogui
 import pydirectinput
@@ -52,7 +52,7 @@ def lookAt(x, y):
     pyautogui.moveTo(16+6*x, 1066-6*y)
     time.sleep(0.19)
     pyautogui.click()
-    pyautogui.moveTo(screenWidth/2, screenHeight/2)
+    pyautogui.moveTo(960, 515)
     time.sleep(0.19)
     pyautogui.click()
 
@@ -99,8 +99,7 @@ def placeGem(x, y):
 
 def checkGem():
     found = False
-    for gem in gems:
-
+    for gem in 'bdegpqry':
         if found == True:
             break
 
@@ -109,7 +108,7 @@ def checkGem():
             path = 'gems/'+str(gem)+str(i)+'.png'
 
             if exists(path):
-                if pyautogui.locateCenterOnScreen(path, grayscale=False, confidence=.8, region=(589, 913, 689, 960)) != None:
+                if pyautogui.locateCenterOnScreen(path, grayscale=True, confidence=.88, region=(582, 918, 703, 941)) != None:
                     return gem+str(i)
                     test = True
                     break
@@ -117,6 +116,7 @@ def checkGem():
                     continue
             else:
                 continue
+
 
 def searchClick(x, *args):
     image = pyautogui.locateCenterOnScreen(x)
@@ -252,17 +252,17 @@ def buildables(roundBuilds):
         if type(each) == Tower:
 
             if all(item in roundBuilds for item in checkOneShot(each)) == True:
-                isBuildable.append(each)
+                return [each,each.name]
 
         else:
             if each in roundBuilds:
-                isBuildable.append(each)
+                return [each,1]
             else:
                 oneShots = checkOneShot(each)
                 if len(oneShots[1]) > 2:
                     x = oneShots[1][0]
                     if roundBuilds.count(x) >= oneShots[1].count(x):
-                        isBuildable.append(each)
+                        return [each-1,3]
                     else:
 
                         x = oneShots[0][0]
@@ -272,5 +272,21 @@ def buildables(roundBuilds):
                 else:
                     x = oneShots[0]
                     if roundBuilds.count(x) >= oneShots.count(x):
-                        isBuildable.append(each)
-    return isBuildable
+                        return [each,2]
+    
+#waits for place phase
+def checkStart():
+    image2 = pyautogui.locateCenterOnScreen("buttons/roundStart.png", grayscale=False, confidence=.9, region=(707, 1012, 1126, 1071))
+    time.sleep(.1)
+    return image2
+
+#returns true false for reset for if enemys hit 2
+def checkLeaks():
+    test = False
+    while checkStart() != None:
+        image = pyautogui.locateCenterOnScreen("buttons/present2.png", grayscale=False, confidence=.9, region=(1654, 502, 1768, 576))
+        time.sleep(.1)
+        if image == None:
+            return True
+    return False
+    

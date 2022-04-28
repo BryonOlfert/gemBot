@@ -1,4 +1,4 @@
-gemBuilds = [
+gemBuildsStart = [
     "r2",
     "r1",
     "p1",
@@ -8,8 +8,12 @@ gemBuilds = [
     "r3"
 ]
 
+gemBuilds = []
+
 mvps = [
-    "r2",
-    silver,
-    silver
+    "AB",
+    "HPD",
+   "MKJ",
+    "Zum",
+
 ]

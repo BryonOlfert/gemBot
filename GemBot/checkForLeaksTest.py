@@ -12,12 +12,10 @@ def main():
     countDownTimer(2)
     
     while 1 == 1:
-        image = pyautogui.locateCenterOnScreen("buttons/present2.png", grayscale=False, confidence=.9, region=(1210, 478, 1301, 605))
+        image = pyautogui.locateCenterOnScreen("buttons/present2.png", grayscale=False, confidence=.9, region=(1654, 502, 1768, 576))
         time.sleep(.1)
         if image == None:
-            print("restart boi")
-        else:
-            print("all good")
+            remake = true
 
 
 main()
